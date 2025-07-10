@@ -1,0 +1,14 @@
+# The main pipeline for demo_repo
+resources:
+  pipelines:
+    demo_repo_pipeline:
+      name: demo_repo_pipeline
+      catalog: dbw_dev_central_india
+      schema: demo_repo_${bundle.target}
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
